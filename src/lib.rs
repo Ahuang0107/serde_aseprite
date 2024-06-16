@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct AsepriteDate {
     pub frames: Vec<Frame>,
     pub meta: Meta,
@@ -14,7 +14,7 @@ impl AsepriteDate {
     }
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Frame {
     pub filename: String,
@@ -26,7 +26,7 @@ pub struct Frame {
     pub source_size: Size,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Rectangle {
     pub x: u32,
     pub y: u32,
@@ -34,20 +34,20 @@ pub struct Rectangle {
     pub h: u32,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Size {
     pub w: u32,
     pub h: u32,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Meta {
     pub frame_tags: Vec<FrameTag>,
     pub layers: Vec<MetaLayer>,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct FrameTag {
     pub name: String,
     pub from: usize,
@@ -56,21 +56,21 @@ pub struct FrameTag {
     pub color: String,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(untagged)]
 pub enum MetaLayer {
     Layer(Layer),
     Group(Group),
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Group {
     pub name: String,
     pub group: Option<String>,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Layer {
     pub name: String,
@@ -80,7 +80,7 @@ pub struct Layer {
     pub group: Option<String>,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Copy, Clone)]
 #[serde(rename_all = "snake_case")]
 pub enum BlendMode {
     Normal,
