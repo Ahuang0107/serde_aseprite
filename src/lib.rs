@@ -3,6 +3,7 @@ use serde::{Deserialize, Serialize};
 #[derive(Serialize, Deserialize, Debug)]
 pub struct AsepriteDate {
     pub frames: Vec<Frame>,
+    pub meta: Meta,
 }
 
 impl AsepriteDate {
@@ -37,4 +38,68 @@ pub struct Rectangle {
 pub struct Size {
     pub w: u32,
     pub h: u32,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "camelCase")]
+pub struct Meta {
+    pub frame_tags: Vec<FrameTag>,
+    pub layers: Vec<MetaLayer>,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct FrameTag {
+    pub name: String,
+    pub from: usize,
+    pub to: usize,
+    pub direction: String,
+    pub color: String,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(untagged)]
+pub enum MetaLayer {
+    Layer(Layer),
+    Group(Group),
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "camelCase")]
+pub struct Group {
+    pub name: String,
+    pub group: Option<String>,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "camelCase")]
+pub struct Layer {
+    pub name: String,
+    pub opacity: u8,
+    pub blend_mode: BlendMode,
+    /// belong to which group
+    pub group: Option<String>,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "snake_case")]
+pub enum BlendMode {
+    Normal,
+    Darken,
+    Multiply,
+    ColorBurn,
+    Lighten,
+    Screen,
+    ColorDodge,
+    Addition,
+    Overlay,
+    SoftLight,
+    HardLight,
+    Difference,
+    Exclusion,
+    Subtract,
+    Divide,
+    Hue,
+    Saturation,
+    Color,
+    Luminosity,
 }
