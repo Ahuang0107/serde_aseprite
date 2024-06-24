@@ -78,6 +78,14 @@ pub struct Layer {
     pub blend_mode: BlendMode,
     /// belong to which group
     pub group: Option<String>,
+    #[serde(default = "Vec::new")]
+    pub cels: Vec<LayerCel>,
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct LayerCel {
+    pub frame: usize,
+    pub data: String,
 }
 
 #[derive(Serialize, Deserialize, Debug, Copy, Clone)]
