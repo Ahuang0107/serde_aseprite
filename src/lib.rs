@@ -54,6 +54,7 @@ pub struct FrameTag {
     pub to: usize,
     pub direction: String,
     pub color: String,
+    pub data: Option<String>,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
@@ -68,6 +69,7 @@ pub enum MetaLayer {
 pub struct Group {
     pub name: String,
     pub group: Option<String>,
+    pub data: Option<String>,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
@@ -78,6 +80,7 @@ pub struct Layer {
     pub blend_mode: BlendMode,
     /// belong to which group
     pub group: Option<String>,
+    pub data: Option<String>,
     #[serde(default = "Vec::new")]
     pub cels: Vec<LayerCel>,
 }

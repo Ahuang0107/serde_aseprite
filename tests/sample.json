@@ -1079,7 +1079,8 @@
         "from": 1,
         "to": 3,
         "direction": "forward",
-        "color": "#000000ff"
+        "color": "#000000ff",
+        "data": "tag_data"
       },
       {
         "name": "Anima2",
@@ -1146,10 +1147,11 @@
         "name": "^UserData",
         "opacity": 255,
         "blendMode": "normal",
+        "data": "layer_data",
         "cels": [
           {
             "frame": 0,
-            "data": "!"
+            "data": "cell_data"
           }
         ]
       }
