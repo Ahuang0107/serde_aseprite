@@ -2,6 +2,7 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct AsepriteDate {
+    pub size: Size,
     pub frames: Vec<Frame>,
     pub meta: Meta,
 }
@@ -24,6 +25,7 @@ pub struct Frame {
     /// the w/h should be same as frame 👆
     pub sprite_source_size: Rectangle,
     pub source_size: Size,
+    pub duration: u32,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
