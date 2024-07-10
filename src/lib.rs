@@ -2,7 +2,6 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct AsepriteDate {
-    pub size: Size,
     pub frames: Vec<Frame>,
     pub meta: Meta,
 }
@@ -45,6 +44,7 @@ pub struct Size {
 #[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Meta {
+    pub size: Size,
     pub frame_tags: Vec<FrameTag>,
     pub layers: Vec<MetaLayer>,
 }
