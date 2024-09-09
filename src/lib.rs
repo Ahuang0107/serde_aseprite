@@ -45,7 +45,9 @@ pub struct Size {
 #[serde(rename_all = "camelCase")]
 pub struct Meta {
     pub size: Size,
+    #[serde(default)]
     pub frame_tags: Vec<FrameTag>,
+    #[serde(default)]
     pub layers: Vec<MetaLayer>,
 }
 
