@@ -12,6 +12,9 @@ impl AsepriteDate {
             std::fs::read_to_string(path)?.as_str(),
         )?)
     }
+    pub fn from_bytes(v: &[u8]) -> Result<Self, Box<dyn std::error::Error>> {
+        Ok(serde_json::from_slice(v)?)
+    }
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
